@@ -33,6 +33,10 @@ jobs:
         create-symlink: true
         append-timestamp: false
 
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '2.7'
+
     - run: ./build_kernel.sh
       env:
         CROSS_COMPILE: "ccache ${{ github.workspace }}/tools/aarch64-linux-gnu-gcc/bin/aarch64-linux-gnu-"
