@@ -33,7 +33,7 @@ jobs:
         create-symlink: true
         append-timestamp: false
 
-    - uses: actions/setup-python@v4
+    - uses: LizardByte/setup-python-action@master
       with:
         python-version: '2.7'
 
