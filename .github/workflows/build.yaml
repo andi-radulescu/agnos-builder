@@ -38,9 +38,9 @@ jobs:
         python-version: '2.7'
 
     - run: ./build_kernel.sh
-      env:
-        CROSS_COMPILE: "ccache ${{ github.workspace }}/tools/aarch64-linux-gnu-gcc/bin/aarch64-linux-gnu-"
-        CC: "ccache ${{ github.workspace }}/tools/aarch64-linux-gnu-gcc/bin/aarch64-linux-gnu-gcc"
+      # env:
+      #   CROSS_COMPILE: "ccache ${{ github.workspace }}/tools/aarch64-linux-gnu-gcc/bin/aarch64-linux-gnu-"
+      #   CC: "ccache ${{ github.workspace }}/tools/aarch64-linux-gnu-gcc/bin/aarch64-linux-gnu-gcc"
 
     - uses: actions/upload-artifact@v4
       with:
