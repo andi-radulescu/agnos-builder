@@ -19,6 +19,9 @@ jobs:
       with:
         filter: blob:none
 
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y bc
+
     - name: checkout kernel submodule
       id: kernel-submodule
       run: |
