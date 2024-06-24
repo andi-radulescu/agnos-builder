@@ -50,9 +50,9 @@ jobs:
         name: boot.img
         path: output/boot.img
 
-    - name: Free build space
-      run: |
-        sudo rm -rf /opt/hostedtoolcache
+    # - name: Free build space
+    #   run: |
+    #     rm -rf /opt/hostedtoolcache
 
     # - uses: docker/setup-qemu-action@v3
     - uses: docker/setup-buildx-action@v3
