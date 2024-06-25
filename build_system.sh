@@ -46,24 +46,27 @@ echo "Building image"
 export DOCKER_CLI_EXPERIMENTAL=enabled
 docker build -f Dockerfile.agnos -t agnos-builder $DIR
 
+# Setup mount container
+MOUNT_CONTAINER_ID=$(docker run -d --privileged --volume $BUILD_DIR:$BUILD_DIR ubuntu:latest sleep infinity)
+
 # Create filesystem ext4 image
 echo "Creating empty filesystem"
-fallocate -l $ROOTFS_IMAGE_SIZE $ROOTFS_IMAGE
-mkfs.ext4 $ROOTFS_IMAGE > /dev/null
+docker exec $MOUNT_CONTAINER_ID fallocate -l $ROOTFS_IMAGE_SIZE $ROOTFS_IMAGE
+docker exec $MOUNT_CONTAINER_ID mkfs.ext4 $ROOTFS_IMAGE > /dev/null
 
 # Mount filesystem
 echo "Mounting empty filesystem"
-mkdir -p $ROOTFS_DIR
-MOUNT_CONTAINER_ID=$(docker run -d --privileged --volume $ROOTFS_IMAGE:$ROOTFS_IMAGE --volume $ROOTFS_DIR:$ROOTFS_DIR ubuntu:latest sleep infinity)
-docker exec $MOUNT_CONTAINER_ID mount $ROOTFS_IMAGE $ROOTFS_DIR
+docker exec $MOUNT_CONTAINER_ID mkdir -p $ROOTFS_DIR
+docker exec $MOUNT_CONTAINER_ID mount -o loop $ROOTFS_IMAGE $ROOTFS_DIR
 
 # Extract image
 echo "Extracting docker image"
 CONTAINER_ID=$(docker container create --entrypoint /bin/bash agnos-builder:latest)
 docker container export -o $BUILD_DIR/filesystem.tar $CONTAINER_ID
 docker container rm $CONTAINER_ID > /dev/null
+docker exec $MOUNT_CONTAINER_ID tar -xf $BUILD_DIR/filesystem.tar -C $ROOTFS_DIR > /dev/null
+
 cd $ROOTFS_DIR
-tar -xf $BUILD_DIR/filesystem.tar > /dev/null
 
 # Add hostname and hosts. This cannot be done in the docker container...
 echo "Setting network stuff"
@@ -80,12 +83,12 @@ DATETIME=$(date '+%Y-%m-%dT%H:%M:%S')
 GIT_HASH=$(git --git-dir=$DIR/.git rev-parse HEAD)
 bash -c "printf \"$GIT_HASH\n$DATETIME\" > BUILD"
 
-cd $DIR
-
 # Unmount image
 echo "Unmount filesystem"
 docker exec $MOUNT_CONTAINER_ID umount -l $ROOTFS_DIR
 docker rm -f $MOUNT_CONTAINER_ID > /dev/null
+
+cd $DIR
 
 # Sparsify
 echo "Sparsify image"
