@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: namespace-profile-arm64-4x16-2004-caching
+    runs-on: namespace-profile-arm64-8x16-2004-caching
     timeout-minutes: 180
     steps:
     - uses: actions/checkout@v4
