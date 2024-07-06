@@ -488,6 +488,17 @@ files = [
     {file = "casadi-3.6.5-cp39-none-manylinux2014_x86_64.whl", hash = "sha256:8bbfb2eb8cb6b9e2384814d6427e48bcf6df049bf7ed05b0a58bb311a1fbf18c"},
     {file = "casadi-3.6.5-cp39-none-win_amd64.whl", hash = "sha256:0e4a4ec2e26ebeb22b0c129f2db3cf90f730cf9fbe98adb9a12720ff6ca1834a"},
     {file = "casadi-3.6.5.tar.gz", hash = "sha256:409a5f6725eadea40fddfb8ba2321139b5252edac8bc115a72f68e648631d56a"},
+    {file = "casadi-3.6.4-cp27-none-macosx_10_13_x86_64.macosx_10_13_intel.whl", hash = "sha256:c82d108f08a850535c77a59519f236c06d7627d91b3b25de1978405c87ba5ee3"},
+    {file = "casadi-3.6.4-cp27-none-manylinux1_i686.whl", hash = "sha256:9e10d3f697b107b0aec7ebbcebfbaf185223e8a86261b84212838f450e089933"},
+    {file = "casadi-3.6.4-cp27-none-manylinux2010_x86_64.whl", hash = "sha256:f65dca86b8916b8f5643a000703959321912246941870068c54429b125d685eb"},
+    {file = "casadi-3.6.4-cp27-none-win_amd64.whl", hash = "sha256:730e73a45810ba45af58128e71f285a3ab7ceb6b32ddbfcfaa38e97b96ff5bef"},
+    {file = "casadi-3.6.4-cp310-none-macosx_10_13_x86_64.macosx_10_13_intel.whl", hash = "sha256:34abbbd02e469d8423cdedb52ef723dd901242f0bd9b3e060f5427a8ca05f23b"},
+    {file = "casadi-3.6.4-cp310-none-macosx_11_0_arm64.whl", hash = "sha256:f561727b6310d3f0344e6518462e995e78716ca386e1593d3a1c380bfdea1285"},
+    {file = "casadi-3.6.4-cp310-none-manylinux2014_aarch64.whl", hash = "sha256:38bdaa49cd3da84ad87cbefbac04750e703896f7dc2746a088121e45ceb48e9d"},
+    {file = "casadi-3.6.4-cp310-none-manylinux2014_i686.whl", hash = "sha256:6e4b572085b679a44c5fd2b1b060aa503b1d451377ced1b6322c672008e290d2"},
+    {file = "casadi-3.6.4-cp310-none-manylinux2014_x86_64.whl", hash = "sha256:e12311692cf7b950ad06805ca935046202d470bf5f7a151fa1e466d3f1012f25"},
+    {file = "casadi-3.6.4-cp310-none-win_amd64.whl", hash = "sha256:66ed424a0ef9141eb6a0070ad3d475f6def7f2de9021950fe54ae001ee8759f1"},
+    {file = "casadi-3.6.4-cp311-none-macosx_10_13_x86_64.macosx_10_13_intel.whl", hash = "sha256:5e3b1835c084507a9bab54702babace4ce583ae1d4cfd8ced48e046cfce99840"},
 ]
 
 [package.dependencies]
